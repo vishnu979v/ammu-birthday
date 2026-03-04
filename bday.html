@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>The Ammu Times</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700;900&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  background:#111;
+  font-family:'Merriweather', serif;
+  overflow-x:hidden;
+}
+
+/* ===== ENVELOPE ===== */
+
+.center-screen{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.envelope-wrapper{
+  width:420px;
+  position:relative;
+  cursor:pointer;
+}
+
+.envelope-body{
+  background:#f3e6cc;
+  height:240px;
+  border-radius:6px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.6);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px;
+}
+
+.envelope-flap{
+  width:0;
+  height:0;
+  border-left:210px solid transparent;
+  border-right:210px solid transparent;
+  border-bottom:130px solid #e8d9b5;
+  position:absolute;
+  top:-130px;
+}
+
+.wax{
+  width:80px;
+  height:80px;
+  background:radial-gradient(circle at 30% 30%, #ff4d4d, #990000);
+  border-radius:50%;
+  position:absolute;
+  top:-40px;
+  left:170px;
+  box-shadow:
+    inset 0 6px 10px rgba(255,255,255,0.4),
+    0 8px 15px rgba(0,0,0,0.6);
+}
+
+/* ===== HOLI EFFECT ===== */
+
+.holi{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  display:none;
+  z-index:9999;
+  mix-blend-mode:screen;
+}
+
+.holi span{
+  position:absolute;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  opacity:0.85;
+  animation:holiFloat linear infinite;
+}
+
+@keyframes holiFloat{
+  0%{ transform:translateY(100vh) scale(1); opacity:1;}
+  100%{ transform:translateY(-10vh) scale(0.3); opacity:0;}
+}
+
+/* ===== NEWSPAPER ===== */
+
+.paper{
+  width:980px;
+  margin:40px auto;
+  background:#e6dcc2;
+  padding:40px 50px;
+  border:3px solid #000;
+  box-shadow:0 20px 60px rgba(0,0,0,0.8);
+  display:none;
+  position:relative;
+  z-index:1;
+}
+
+.price{
+  position:absolute;
+  right:40px;
+  top:20px;
+  font-size:14px;
+}
+
+.masthead{
+  text-align:center;
+  font-family:'Libre Baskerville', serif;
+  font-size:80px;
+  font-weight:900;
+  border-bottom:3px solid black;
+  padding-bottom:10px;
+}
+
+.date-line{
+  text-align:center;
+  font-size:14px;
+  border-bottom:1px solid black;
+  padding-bottom:6px;
+}
+
+.main-headline{
+  font-size:34px;
+  text-align:center;
+  margin:30px 0;
+  font-weight:700;
+}
+
+.content{
+  display:grid;
+  grid-template-columns: 2fr 1.4fr 1.6fr;
+  gap:35px;
+}
+
+.section-title{
+  font-weight:700;
+  margin-bottom:10px;
+}
+
+.article{
+  font-size:15px;
+  line-height:1.8;
+  text-align:justify;
+  margin-bottom:15px;
+}
+
+.dropcap:first-letter{
+  font-size:52px;
+  float:left;
+  padding-right:6px;
+  font-weight:bold;
+}
+
+.cartoon-img{
+  width:100%;
+  border:2px solid black;
+  margin-top:15px;
+}
+
+.box{
+  border:2px solid black;
+  padding:15px;
+  margin-bottom:25px;
+  font-size:14px;
+}
+
+.image-box{
+  border:2px solid black;
+  padding:12px;
+  background:#d8d0b8;
+}
+
+.image-box img{
+  width:100%;
+  height:420px;
+  object-fit:cover;
+  border:1px solid #000;
+}
+
+.image-caption{
+  text-align:center;
+  font-style:italic;
+  font-size:14px;
+  margin-top:10px;
+}
+
+.footer{
+  margin-top:40px;
+  border-top:2px solid black;
+  padding-top:18px;
+  text-align:center;
+  font-style:italic;
+  font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="holi" id="holi"></div>
+
+<div class="center-screen" id="envelopeScreen">
+  <div class="envelope-wrapper" onclick="openLetter()">
+    <div class="envelope-flap"></div>
+    <div class="envelope-body">
+      <h2>Happy Birthday to the Special Person</h2>
+      <div class="subtext">Breaking News. Inside it's about you </div>
+    </div>
+    <div class="wax"></div>
+  </div>
+</div>
+
+<div class="paper" id="paper">
+
+<div class="price">Price: 5 Smiles</div>
+
+<div class="masthead">THE AMMU TIMES</div>
+<div class="date-line">Warangal, Telangana • 4 March 2026 • Wednesday</div>
+
+<div class="main-headline">
+Ammu Turns 19; A Year Older, A Little More Remarkable
+</div>
+
+<div class="content">
+
+<div>
+<div class="section-title">Warangal:</div>
+
+<div class="article dropcap">
+Warangal witnessed an unexpected rise in glow levels this Wednesday as Ammu officially turned 19. What started as just another date on the calendar somehow felt a little different this time.
+</div>
+
+<div class="article">
+There was no big announcement, no breaking news banner — but the vibe definitely changed. Smile levels went up, confidence looked upgraded, and the day felt brighter than usual.
+</div>
+
+<div class="article">
+Turning nineteen may sound simple, but sometimes it’s not just about the number. It’s about growth, small changes, and becoming a slightly better version of yourself without even realizing it.
+</div>
+
+<img src="birthday.png" class="cartoon-img">
+</div>
+
+<div>
+<div class="section-title">Exclusive Details of Her</div>
+
+<div class="article">
+She is the one who will add glow to your life. She is like a rainbow — hard to touch, but beautiful to see and feel. I never thought she would become this important in my life. I feel comfortable with her in a way I never have with anyone else. I am ready to listen to her stuff n number of times.
+</div>
+
+<div class="article">
+Whenever she says “chempa pagultadi” in her tone, it really gives me an inexpressible feeling. She is so special, even though I have met her only two times. The first time I saw her, my heart just blew away — and she feels like someone meant for a lifetime.
+</div>
+</div>
+
+<div>
+<div class="box">
+<strong>Birthday Forecast</strong><br><br>
+Smile Rate: Unlimited<br>
+Glow Level: Maximum<br>
+Birthday Wishes Received: Countless<br>
+Happiness Index: 9999<br>
+Confidence Meter: Rising<br>
+Year Ahead Outlook: Promising
+</div>
+
+<div class="image-box">
+  <img src="bday2.png">
+  <div class="image-caption">
+    Ammu – Model (Warangal Ka Don)
+  </div>
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+“Yesterday is history, tomorrow is a mystery, but today is the present — so enjoy that present (gift) and make lasting memories.”
+</div>
+
+</div>
+
+<audio id="song" src="song.mp3"></audio>
+
+<script>
+function openLetter(){
+  document.getElementById("envelopeScreen").style.display="none";
+  document.getElementById("paper").style.display="block";
+  document.getElementById("song").play();
+  startHoli();
+}
+
+function startHoli(){
+  const holi=document.getElementById("holi");
+  holi.style.display="block";
+
+  const colors=["#ff4d4d","#ffcc00","#00ffcc","#ff66ff","#3399ff","#ff9933","#66ff66"];
+
+  for(let i=0;i<120;i++){
+    let s=document.createElement("span");
+    s.style.left=Math.random()*100+"vw";
+    s.style.background=colors[Math.floor(Math.random()*colors.length)];
+    s.style.animationDuration=(3+Math.random()*4)+"s";
+    holi.appendChild(s);
+  }
+}
+</script>
+
+</body>
+</html>
